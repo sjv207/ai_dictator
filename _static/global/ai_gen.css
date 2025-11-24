@@ -1,0 +1,162 @@
+.slidecontainer {
+    width: 52%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 25px;
+    background: #2d1869;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 10px;
+    height: 25px;
+    background: #2558e2;
+    cursor: pointer;
+}
+
+.ticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5px;
+}
+
+.tick {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: #C7BAA7;
+    height: 10px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+.slider-handle {
+    cursor: move;
+    width: 0px;
+}
+
+.multichoice {
+    margin: 0 auto;
+}
+
+.choices {
+    margin-left: 50px;
+}
+
+.ai-block {
+    border: 1px solid orange;
+    padding: 5px;
+    border-radius: 5px;
+    /* min-height: 21em; */
+}
+
+.story-block {
+    border: 1px solid #3f7cac;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.ai-idea-text {
+    background: darkgrey;
+    color: white;
+    border: 1px solid orange;
+    padding: 5px;
+    border-radius: 5px;
+    min-height: 7em;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px 8px 10px;
+}
+
+.selected {
+    background-color: orange;
+    width: 18px;
+    height: 18px;
+    margin: -2px;
+    padding: 0px 0px;
+}
+
+.rated {
+    background-color: green;
+}
+
+.card-body {
+    padding: 0rem 1rem 1rem;
+    white-space: pre-line;
+}
+
+.image_shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* display: block; */
+    padding: 2px;
+    border-radius: 10px;
+    height: 30px;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.free-tab {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.used-tab {
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.error-tab {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.suggestions-summary {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

@@ -1,0 +1,27 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
+
+{{ block title }}
+Study Overview
+{{ endblock }}
+
+{{ block content }}
+
+
+<p><strong>Overview:</strong> This study will consist of ...</p>
+
+
+{{ next_button }}
+
+<script>
+    // Grab as much detail as we can about the users environment
+    var browserType = navigator.userAgent;
+    var platform = navigator.platform;
+    var screenWidth = screen.width;
+    var screenHeight = screen.height;
+
+    document.getElementById('screen_size').value = "Screen size: (" + screen.width + "," + screen.height + ")";
+    document.getElementById('browser_type').value = "Browser: " + browserType + ", on: " + navigator.platform;
+
+</script>
+{{ endblock }}

@@ -1,0 +1,24 @@
+{{ extends "global/Page.html" }}
+{{ load otree }}
+
+{{ block title }}
+Introduction
+{{ endblock }}
+{{ block content }}
+
+
+<p>We have sent a request to an AI agent, asking what it would to in the other players position. The other player will then havee an
+    opportunity to reassess their decision on how much to give to you based on the AI's suggestion.
+</p>
+
+
+{{formfield player.expected_will_change }}
+
+<p>(You previously thought the other player would give you {{ player.expected_amount_to_receive|to2 }}.)</p>
+
+{{formfield player.expected_new_amount_to_receive }}
+
+
+{{ next_button}}
+
+{{ endblock }}

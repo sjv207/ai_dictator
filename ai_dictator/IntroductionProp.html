@@ -1,0 +1,23 @@
+
+{{ extends "global/Page.html" }}
+{{ load otree }}
+
+{{ block title }}
+Introduction
+{{ endblock }}
+{{ block content }}
+
+
+<p>Welcome to our experiment.</p>
+
+<p>You have been awarded £{{ session.config.endowment}} and must decide what to do with that money.</p>
+
+<p>You can keep all of it, give some of it away, or give it all away to the other player in this session.</p>
+
+<p>After you make your decision, the other player will be told how much you decided to give them.</p>
+
+{{formfield player.amount_to_give }}
+
+{{ next_button }}
+
+{{ endblock }}

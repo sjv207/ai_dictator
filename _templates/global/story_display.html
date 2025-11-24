@@ -1,0 +1,15 @@
+<div class="story-block">
+    {{ if session.config.name == "evaluator" or session.config.name == "TEST_just_the_evaluator" }}
+    <p>Here is the story you are reviewing:</p>
+    <p><strong>Topic: </strong>Write a short story about {{player.topic}}</p>
+
+    {{ else }}
+    <p>Here is the story you have submitted:</p>
+    {{ endif }}
+
+
+    <div class="card bg-light card-body">
+        {{ player.get_story }}
+    </div>
+</div>
+&nbsp;

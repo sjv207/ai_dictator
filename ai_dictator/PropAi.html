@@ -1,0 +1,45 @@
+{{ extends "global/Page.html" }}
+{{ load otree }}
+
+{{ block title }}
+Introduction
+{{ endblock }}
+{{ block content }}
+
+
+<div id="intro" style="display: block;">
+    <p>We have sent a request to an AI agent, asking what it would to in your position. After it responds, if you whish
+        you
+        can reassess your decision on how much to give the other player..</p>
+</div>
+
+<div id="ai_response" style="display: none;">
+    <p>The AI agent has responded. This is its suggestion:</p>
+    <div class="ai-idea-text row">
+        <p id="ai_text"></p>
+    </div>
+
+    <p>(You previously decided you would give {{ player.amount_to_give|to2 }}.)</p>
+
+    {{formfield player.revised_amount_to_give }}
+
+</div>
+
+<button id="reassess_button" disabled="true" class="btn btn-primary">
+    Reassess Decision
+</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Simulate receiving AI response after a delay
+        setTimeout(function () {
+            var aiSuggestion = "I suggest you give £5.00 to the other participant.";
+            document.getElementById("ai_text").innerText = aiSuggestion;
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("ai_response").style.display = "block";
+            document.getElementById("reassess_button").disabled = false;
+        }, 2000); // 2 seconds delay for demonstration
+    });
+</script>
+
+{{ endblock }}
