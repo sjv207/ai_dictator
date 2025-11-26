@@ -18,9 +18,7 @@ RUN apk update \
     && pip install --upgrade openai \
     && mkdir -p /opt/init \
     && chmod +x /entrypoint.sh \
-#    && pip install mysql-connector-python \
-#    && pip3 uninstall -y uvicorn \
-#    && pip3 install uvicorn[standard]==0.13.4 \    
+    && pip3 install --upgrade 'uvicorn[standard]>=0.20.0,<0.30.0' 'uvloop>=0.17.0,<0.20.0' \
     && apk del curl gcc musl-dev postgresql-dev libffi-dev
 
 WORKDIR /opt/otree
