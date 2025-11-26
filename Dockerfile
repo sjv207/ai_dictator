@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.10-alpine
 
 ADD ./ /opt/otree
 ADD ./entrypoint.sh /entrypoint.sh

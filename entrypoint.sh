@@ -9,11 +9,11 @@ until /usr/bin/env python /pg_ping.py 2>&1 >/dev/null; do
 done
 
 if [ ! -f "/opt/init/.done" ]; then
-    /usr/bin/env python -u /usr/local/bin/otree resetdb --noinput -v 1 \
+    /usr/bin/env python -u /usr/local/bin/otree resetdb --noinput \
     && touch /opt/init/.done
 fi
 
 export PYTHONUNBUFFERED=1
 cd /opt/otree
-python manage.py collectstatic
+# python manage.py collectstatic
 exec "$@"
