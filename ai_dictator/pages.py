@@ -48,11 +48,13 @@ class PropAi(Page):
             logger.info(f"Going to fetch a new AI suggestion for player: {player.id}, for index: {index}")
 
             # Have we already requested a suggestion?
-            field_name = f'ai_prompt_{index}'
-            prompt_text = getattr(player, field_name)
+            prompt_name = f'ai_prompt_{index}'
+            prompt_text = getattr(player, prompt_name)
+            error_name = f'ai_suggestion_{index}_error'
+            error_text = getattr(player, error_name)
 
             # A page refresh will cause the suggestion to be regenerated...
-            if prompt_text != "":
+            if prompt_text != "" and error_text == "":
                 logger.info("AI suggestion already exists, not generating a new one.")
                 status, suggestion = player.get_AI_idea(index)
                 response = {"status": status, "text": suggestion, "index": index}

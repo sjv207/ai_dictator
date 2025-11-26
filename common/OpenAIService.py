@@ -73,7 +73,7 @@ def read_from_GTP(question: str, timeout: int):
         response = client.chat.completions.create(
             model=BOT_MODEL,
             messages=[{"role": "user", "content": question}],
-            request_timeout=timeout)
+            r_timeout=timeout)
         logger.info(f"\n\nResponse:\n{response}\n\n")
         text = response['choices'][0]['message']['content']
 
