@@ -5,6 +5,13 @@ Thank you
 
 <p>Thank you for taking the time to complete this survey. Your responses have been recorded.</p>
 
+{{ if player.participant.vars.role == 'Proposer' }}
+    <p>You decided to award: <b>{{ award }}</b>, which means you get: <strong>{{ my_payoff }}</strong></p>
+{{ else }}
+    <p>After interacting with the AI agent, the other player decided to award you: <b>{{ my_payoff }}</b></p>
+{{ endif }}
+
+<h3>Completion</h3>
 <p><b>Please click <a href="{{PROLIFIC_COMPLETION_LINK}}">HERE</a>
 to return this study to Prolific, which will ensure your payment.</b></p>
 

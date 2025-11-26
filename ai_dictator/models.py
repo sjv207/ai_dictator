@@ -38,6 +38,25 @@ class Group(BaseGroup):
     pass
 
 
+def store_final_decision(group: Group):
+    players = group.get_players()
+
+    for i, player in enumerate(players):
+
+        if player.my_role == C.ROLE_PROPOSER:
+            final_amount = player.session.config['endowment'] - player.revised_amount_to_give
+
+        else:
+            if i ==0:
+                other_player = players[1]
+            else:
+                other_player = players[0]
+            final_amount = other_player.revised_amount_to_give
+
+        player.participant.vars['my_payoff'] = final_amount
+        player.participant.vars['role'] = player.my_role
+
+
 class Player(BasePlayer):
     my_role = models.StringField()
     amount_to_give = models.CurrencyField(min=0, max=10,

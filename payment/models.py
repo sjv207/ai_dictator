@@ -36,6 +36,8 @@ class C(BaseConstants):
         dict(name='ai_catagories_Music', label='Music'),
         dict(name='ai_catagories_Video', label='Video'),
     ]
+    ROLE_PROPOSER = 'Proposer'
+    ROLE_RESPONDER = 'Responder'    
 
 
 class Subsession(BaseSubsession):

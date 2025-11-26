@@ -1,5 +1,5 @@
 from common.common_data import PENDING
-from .models import Player, C
+from .models import Player, C, store_final_decision
 from otree.api import Page, WaitPage
 import logging
 
@@ -93,4 +93,10 @@ class RespAi(Page):
         return player.my_role == C.ROLE_RESPONDER
 
 
-page_sequence = [GroupingWaitPage, IntroductionProp, IntroductionResp, PropAi, RespAi]
+class PropWaitPage(WaitPage):
+    after_all_players_arrive = store_final_decision
+
+
+page_sequence = [
+    GroupingWaitPage, IntroductionProp, IntroductionResp,
+    PropAi, RespAi, PropWaitPage]

@@ -74,7 +74,14 @@ class Demographics(Page):
 class Finally(Page):
     @staticmethod
     def vars_for_template(player: Player):
-        return {'PROLIFIC_COMPLETION_LINK': player.session.config['PROLIFIC_COMPLETION_LINK']}
+
+        my_payoff = player.participant.vars['my_payoff']
+        role = player.participant.vars['role']
+        award = 0
+        if role == C.ROLE_PROPOSER:
+            award = player.session.config['endowment'] - my_payoff
+
+        return {'award': award, 'my_payoff': my_payoff, 'PROLIFIC_COMPLETION_LINK': player.session.config['PROLIFIC_COMPLETION_LINK']}
 
 
 page_sequence = [ConsentDropout, Me, Demographics, Finally]
