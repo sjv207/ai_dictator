@@ -30,15 +30,66 @@ Introduction
 </button>
 
 <script>
+
+    let pendingRequests = false;
+
+        /*
+     * Handler for server response to liveSend method
+     */
+    function liveRecv(data) {
+        // javascript destructuring assignment
+        // "respones: [{"status": status, "text": text, "index": index},]
+        let { responses } = data;
+
+        for (index = 0; index < responses.length; index++) {
+            response = responses[index];
+            ideaIndex = response['index'];
+            text = response['text'];
+            status = response['status'];
+
+            console.log("Status: " + status + ", text: " + text + ", index: " + ideaIndex)
+            if (status == "Suggestion") {
+                showIdea(ideaIndex, text)
+
+            } else if (status == "Error") {
+                showError(ideaIndex, text)
+
+            } else {
+                console.log("ERROR: don't understand status: " + response['status'])
+                continue;
+            }
+            pendingRequests = false;
+        }
+    }
+
+    function showIdea(ideaIndex, text) {
+        console.log("Showing idea index " + ideaIndex + ": " + text)
+        document.getElementById("ai_text").innerText = text;
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("ai_response").style.display = "block";
+        document.getElementById("reassess_button").disabled = false;
+
+        // // When the user clicks the reassess button, submit the form
+        // document.getElementById("reassess_button").onclick = function () {
+        //     liveSend({ 'type': 'submit' });
+        // };
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
-        // Simulate receiving AI response after a delay
-        setTimeout(function () {
-            var aiSuggestion = "I suggest you give £5.00 to the other participant.";
-            document.getElementById("ai_text").innerText = aiSuggestion;
-            document.getElementById("intro").style.display = "none";
-            document.getElementById("ai_response").style.display = "block";
-            document.getElementById("reassess_button").disabled = false;
-        }, 2000); // 2 seconds delay for demonstration
+        // Get the first idea from the AI on page load
+        liveSend({ 'type': 'generate', 'index': 0 })
+        pendingRequests = true;
+
+        // Set up a poller to check for AI response every 2 seconds
+        refreshInterval = setInterval(() => {
+            if (pendingRequests === false) {
+                console.log("Nothing left to update, deleting interval")
+                clearInterval(refreshInterval);
+            } else {
+                console.log("Still want some ideas back.")
+                liveSend({ 'type': 'poll', 'pendingIndexes': [0] });
+            }
+        }, 2000)
     });
 </script>
 

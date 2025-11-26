@@ -19,7 +19,7 @@ ROOMS = [
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=3.00,
-    use_canned_responses=False,
+    use_canned_responses=True,
     AI_timeout=30.0,         # Seconds to wait for AI to respond
     review_ref="ABC-123",
     endowment=10.00
