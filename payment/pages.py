@@ -81,6 +81,7 @@ class Finally(Page):
         if role == C.ROLE_PROPOSER:
             award = player.session.config['endowment'] - my_payoff
 
+        player.participant.payoff = my_payoff
         return {'award': award, 'my_payoff': my_payoff, 'PROLIFIC_COMPLETION_LINK': player.session.config['PROLIFIC_COMPLETION_LINK']}
 
 
