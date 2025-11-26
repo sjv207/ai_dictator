@@ -15,5 +15,5 @@ fi
 
 export PYTHONUNBUFFERED=1
 cd /opt/otree
-# python manage.py collectstatic
+python manage.py collectstatic
 exec "$@"

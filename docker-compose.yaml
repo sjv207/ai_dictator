@@ -3,7 +3,7 @@ version: "3"
 services:
 
   database:
-    image: postgres:12.5
+    image: postgres:17
     environment:
       POSTGRES_DB: ${POSTGRES_DATABASE}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -28,7 +28,7 @@ services:
     # if you want to build an image locally, uncomment it.
 
     build: ./
-    image: feele/ai_dictator:1.0
+    image: feele/ai_dictator:latest
     environment:
       DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database/${POSTGRES_DATABASE}"
       OTREE_ADMIN_PASSWORD: ${OTREE_ADMIN_PASSWORD}
@@ -39,7 +39,7 @@ services:
     volumes:
       - "otree-resetdb:/opt/init"
     # Uncomment for live editing
-      - ./:/opt/otree
+    #  - ./:/opt/otree
     command: "otree runprodserver 0.0.0.0:80"
     restart: always
     logging:
@@ -60,4 +60,4 @@ networks:
     ipam:
       config:
         - subnet: 172.80.2.48/28
-          gateway: 172.80.1.49
+          gateway: 172.80.2.49
