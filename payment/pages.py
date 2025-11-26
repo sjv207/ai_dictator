@@ -72,7 +72,9 @@ class Demographics(Page):
 
 
 class Finally(Page):
-    pass
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'PROLIFIC_COMPLETION_LINK': player.session.config['PROLIFIC_COMPLETION_LINK']}
 
 
 page_sequence = [ConsentDropout, Me, Demographics, Finally]

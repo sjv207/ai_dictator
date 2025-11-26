@@ -20,6 +20,8 @@ services:
     tmpfs:
       - "/tmp"
       - "/run"
+    networks:
+      - ai_dictator_network
 
   otree:
     # if using Docker Hub, leave "build: ./" commented out.
@@ -45,8 +47,17 @@ services:
         max-size: "10m"
         max-file: "3"
     cpus: 2.0
+    networks:
+      - ai_dictator_network
 
 volumes:
   database:
   otree-resetdb:
 
+networks:
+  ai_dictator_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.80.2.32/28
+          gateway: 172.80.1.33

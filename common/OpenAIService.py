@@ -73,9 +73,9 @@ def read_from_GTP(question: str, timeout: int):
         response = client.chat.completions.create(
             model=BOT_MODEL,
             messages=[{"role": "user", "content": question}],
-            r_timeout=timeout)
+            timeout=timeout)
         logger.info(f"\n\nResponse:\n{response}\n\n")
-        text = response['choices'][0]['message']['content']
+        text = response.choices[0].message.content
 
     except Exception as e:
         msg = f"Call to AI Service failed: {e}, please try again"

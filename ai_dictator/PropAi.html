@@ -58,12 +58,10 @@ Reassessment
 
     let pendingRequests = false;
 
-    /*
+/*
  * Handler for server response to liveSend method
  */
     function liveRecv(data) {
-        // javascript destructuring assignment
-        // "respones: [{"status": status, "text": text, "index": index},]
         let { responses } = data;
 
         for (index = 0; index < responses.length; index++) {
@@ -72,7 +70,6 @@ Reassessment
             text = response['text'];
             status = response['status'];
 
-            console.log("Status: " + status + ", text: " + text + ", index: " + ideaIndex)
             if (status == "Suggestion") {
                 showIdea(ideaIndex, text)
 
@@ -88,19 +85,15 @@ Reassessment
     }
 
     function showIdea(ideaIndex, text) {
-        console.log("Showing idea index " + ideaIndex + ": " + text)
         document.getElementById("ai_text").innerText = text;
         document.getElementById("intro").style.display = "none";
-        console.log("Displaying ai response div");
         document.getElementById("ai_response").style.display = "block";
         document.getElementById("reassess_button").disabled = false;
     }
 
     function showError(ideaIndex, text) {
-        console.log("Showing idea index " + ideaIndex + ": " + text)
         document.getElementById("error_text").innerText = text;
         document.getElementById("intro").style.display = "none";
-        console.log("Displaying ai response div");
         document.getElementById("error_message").style.display = "block";
         document.getElementById("reassess_button").disabled = true;
     }
@@ -113,10 +106,8 @@ Reassessment
         // Set up a poller to check for AI response every 2 seconds
         refreshInterval = setInterval(() => {
             if (pendingRequests === false) {
-                console.log("Nothing left to update, deleting interval")
                 clearInterval(refreshInterval);
             } else {
-                console.log("Still want some ideas back.")
                 liveSend({ 'type': 'poll', 'pendingIndexes': [0] });
             }
         }, 2000)

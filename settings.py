@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='dictator',
         display_name="Full AI Dictator study",
-        app_sequence=['ai_dictator', 'payment'],
+        app_sequence=['consent', 'ai_dictator', 'payment'],
         num_demo_participants=2,
         use_browser_bots=False,
     ),
@@ -22,7 +22,9 @@ SESSION_CONFIG_DEFAULTS = dict(
     use_canned_responses=False,
     AI_timeout=30.0,         # Seconds to wait for AI to respond
     review_ref="ABC-123",
-    endowment=10.00
+    endowment=10.00,
+
+    PROLIFIC_COMPLETION_LINK="https://app.prolific.co/submissions/complete?cc=XXXXXX",
 )
 
 PARTICIPANT_FIELDS = []
