@@ -86,6 +86,15 @@
     min-height: 7em;
 }
 
+.ai-prompt-text {
+    background: #d6ddf2;
+    /* color: #040f2c; */
+    border: 1px solid orange;
+    padding: 5px;
+    border-radius: 5px;
+    min-height: 7em;
+}
+
 .previous {
     background-color: #f1f1f1;
     color: black;

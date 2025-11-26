@@ -2,21 +2,29 @@
 {{ load otree }}
 
 {{ block title }}
-Introduction
+Reassessment
 {{ endblock }}
 {{ block content }}
 
 
-<div id="intro" style="display: block;">
-    <p>We have sent a request to an AI agent, asking what it would to in your position. After it responds, if you wish
+<div>
+    <p>We have sent the followong question to an AI agent, asking what it would do in your position. After it responds, if you wish,
         you can reassess your decision on how much to give the other player..</p>
 
+    <div class="ai-prompt-text row">
+        <p>{{C.AI_PROMPT}}</p>
+    </div>
+    <p></p>
+</div>
+
+<div id="intro" style="display: block;">
     <div class="ai-idea-text row">
         <div class="text-center">
             <div class="spinner-border" role="status">
             <span class="sr-only"></span>
             </div>
             <p>Waiting for AI response...</p>
+            <p>Please be patient, this can take up to 30s</p>
         </div>
     </div>
 </div>
@@ -74,13 +82,9 @@ Introduction
         console.log("Showing idea index " + ideaIndex + ": " + text)
         document.getElementById("ai_text").innerText = text;
         document.getElementById("intro").style.display = "none";
+        console.log("Displaying ai response div");
         document.getElementById("ai_response").style.display = "block";
         document.getElementById("reassess_button").disabled = false;
-
-        // // When the user clicks the reassess button, submit the form
-        // document.getElementById("reassess_button").onclick = function () {
-        //     liveSend({ 'type': 'submit' });
-        // };
     }
 
     document.addEventListener("DOMContentLoaded", function () {

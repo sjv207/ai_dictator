@@ -13,6 +13,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
     ROLE_PROPOSER = 'Proposer'
     ROLE_RESPONDER = 'Responder'
+    AI_PROMPT = AI_PROMPT
 
 
 class Subsession(BaseSubsession):
@@ -74,12 +75,12 @@ class Player(BasePlayer):
 
         # Store the prompt
         prompt_name = f'ai_prompt_{idea_index}'
-        setattr(self, prompt_name, AI_PROMPT)
+        setattr(self, prompt_name, C.AI_PROMPT)
 
         # This method will kick the actual request off in a seperate process and run it async
         get_new_idea(self.participant.label or self.participant.code,
                      idea_index,
-                     AI_PROMPT,
+                     C.AI_PROMPT,
                      self.session.config['AI_timeout'],
                      self.session.config['use_canned_responses'])
 
